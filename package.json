@@ -1,0 +1,26 @@
+{
+  "name": "idea-de-txabi",
+  "version": "1.0.0",
+  "description": "Una fantastica idea que ha tenido el tutor de Apps Factory Txabi Anastasio. Una idea revolucionaria que arreglará la democracia",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carlos-appsfactory/idea-de-txabi.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/carlos-appsfactory/idea-de-txabi/issues"
+  },
+  "homepage": "https://github.com/carlos-appsfactory/idea-de-txabi#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "nodemon": "^3.1.10"
+  }
+}
