@@ -4,25 +4,37 @@
       "id": 1,
       "nombre": "Vetrams + Sugar Paws",
       "descripcion": "Animales y veterinarios",
-      "mentores": []
+      "mentores": [],
+      "technologies": ["React Native", "Firebase"],
+      "skills": ["gestión de citas", "geolocalización", "UX/UI", "fichas médicas"],
+      "topics_experience": ["salud animal", "adopción"]
     },
     {
       "id": 2,
       "nombre": "Stylo + Evora",
       "descripcion": "Ropa y moda",
-      "mentores": []
+      "mentores": [],
+      "technologies": ["React Native", "Firebase"],
+      "skills": ["pasarela de pago", "catálogos", "recomendaciones", "UX/UI"],
+      "topics_experience": ["moda", "comercio electrónico"]
     },
     {
       "id": 3,
       "nombre": "Scapian + Suburbis",
       "descripcion": "Escape room y barrios de barcelona",
-      "mentores": []
+      "mentores": [],
+      "technologies": ["React Native", "Node.js", "MongoDB", "Python microservices"],
+      "skills": ["gamificación", "narrativa", "geolocalización", "UX/UI"],
+      "topics_experience": ["cultura"]
     },
     {
       "id": 4,
       "nombre": "Packo + Unara",
       "descripcion": "Viajes con tu mejor amigo Packo",
-      "mentores": []
+      "mentores": [],
+      "technologies": ["React Native", "Node.js", "MongoDB"],
+      "skills": ["geolocalización", "gestión de reservas", "comunidad", "UX/UI"],
+      "topics_experience": ["viajes", "mascotas", "turismo"]
     }
   ],
   "mentores": [
@@ -33,7 +45,7 @@
       "foto": "/img/eric_salat.jpg",
       "equipos": [],
       "technologies": ["JavaScript", "TypeScript", "React", "AMPscript"],
-      "skills": ["frontend", "email marketing", "conversion", "UI design"],
+      "skills": ["frontend", "email marketing", "conversion", "UX/UI"],
       "topics_experience": ["comunicación", "marketing", "viajes"]
     },
     {
@@ -42,8 +54,8 @@
       "empresa": "Scopely",
       "foto": "/img/tian.jpg",
       "equipos": [],
-      "technologies": ["Figma", "UX", "UI"],
-      "skills": ["UX research", "prototipado", "gamificación", "coordinación de proyectos"],
+      "technologies": ["Figma"],
+      "skills": ["UX/UI", "UX research", "prototipado", "gamificación", "gestión de proyectos"],
       "topics_experience": ["videojuegos", "apps", "narrativa"]
     },
     {
@@ -62,8 +74,8 @@
       "empresa": "Margot",
       "foto": "/img/toni_joan.jpg",
       "equipos": [],
-      "technologies": ["estrategia creativa", "brand building", "innovación"],
-      "skills": ["gestión de proyectos", "estrategia de marca", "conceptualización", "dirección creativa"],
+      "technologies": [],
+      "skills": ["estrategia creativa", "brand building", "innovación", "gestión de proyectos", "conceptualización", "dirección creativa"],
       "topics_experience": ["publicidad", "branding", "startups"]
     }
   ]
