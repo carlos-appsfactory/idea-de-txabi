@@ -1,5 +1,5 @@
 {
-  "Equipos": [
+  "equipos": [
     {
       "id": 1,
       "nombre": "Vetrams + Sugar Paws",
@@ -25,7 +25,7 @@
       "mentores": []
     }
   ],
-  "Mentores": [
+  "mentores": [
     {
       "id": 1,
       "nombre": "Eric Salat",

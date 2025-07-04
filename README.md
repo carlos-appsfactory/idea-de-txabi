@@ -25,28 +25,32 @@ Obtiene la información de todos los equipos. Ejemplo:
 
 ```json
 {
-  "id": 1,
-  "nombre": "Vetrams + Sugar Paws",
-  "descripcion": "Animales y veterinarios",
-},
-{
-  "id": 2,
-  "nombre": "Stylo + Evora",
-  "descripcion": "Ropa y moda",
-},
-{
-  "id": 3,
-  "nombre": "Scapian + Suburbis",
-  "descripcion": "Escape room y barrios de barcelona",
-},
-{
-  "id": 4,
-  "nombre": "Packo + Unara",
-  "descripcion": "Viajes con tu mejor amigo Packo",
+  [
+    {
+      "id": 1,
+      "nombre": "Vetrams + Sugar Paws",
+      "descripcion": "Animales y veterinarios"
+    },
+    {
+      "id": 2,
+      "nombre": "Stylo + Evora",
+      "descripcion": "Ropa y moda"
+    },
+    {
+      "id": 3,
+      "nombre": "Scapian + Suburbis",
+      "descripcion": "Escape room y barrios de barcelona"
+    },
+    {
+      "id": 4,
+      "nombre": "Packo + Unara",
+      "descripcion": "Viajes con tu mejor amigo Packo"
+    }
+  ]
 }
 ```
 
-**POST - /api/equipos**
+**POST - /api/equipos/\<id\>**
 Envía un array con los IDs de los mentores favoritos del equipo, ordenados. Ejemplo:
 
 ```json
@@ -60,36 +64,40 @@ Obtiene la información de todos los mentores. Ejemplo:
 
 ```json
 {
-  "id": 1,
-  "nombre": "Eric Salat",
-  "empresa": "Freelance",
-  "foto": "/img/eric_salat.jpg",
-  "equipos": []
-},
-{
-  "id": 2,
-  "nombre": "Tian",
-  "empresa": "Scopely",
-  "foto": "/img/tian.jpg",
-  "equipos": []
-},
-{
-  "id": 3,
-  "nombre": "Fátima",
-  "empresa": "INQBarna",
-  "foto": "/img/fatima.jpg",
-  "equipos": []
-},
-{
-  "id": 4,
-  "nombre": "Toni y Joan",
-  "empresa": "Margot",
-  "foto": "/img/toni_joan.jpg",
-  "equipos": []
+  [
+    {
+      "id": 1,
+      "nombre": "Eric Salat",
+      "empresa": "Freelance",
+      "foto": "/img/eric_salat.jpg",
+      "equipos": []
+    },
+    {
+      "id": 2,
+      "nombre": "Tian",
+      "empresa": "Scopely",
+      "foto": "/img/tian.jpg",
+      "equipos": []
+    },
+    {
+      "id": 3,
+      "nombre": "Fátima",
+      "empresa": "INQBarna",
+      "foto": "/img/fatima.jpg",
+      "equipos": []
+    },
+    {
+      "id": 4,
+      "nombre": "Toni y Joan",
+      "empresa": "Margot",
+      "foto": "/img/toni_joan.jpg",
+      "equipos": []
+    }
+  ]
 }
 ```
 
-**POST - /api/mentores**
+**POST - /api/mentores/\<id\>**
 Envía un array con los IDs de los equipos favoritos del mentor, ordenados. Ejemplo:
 
 ```json
