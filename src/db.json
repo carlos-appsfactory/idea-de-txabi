@@ -31,28 +31,40 @@
       "nombre": "Eric Salat",
       "empresa": "Freelance",
       "foto": "/img/eric_salat.jpg",
-      "equipos": []
+      "equipos": [],
+      "technologies": ["JavaScript", "TypeScript", "React", "AMPscript"],
+      "skills": ["frontend", "email marketing", "conversion", "UI design"],
+      "topics_experience": ["comunicación", "marketing", "viajes"]
     },
     {
       "id": 2,
       "nombre": "Tian",
       "empresa": "Scopely",
       "foto": "/img/tian.jpg",
-      "equipos": []
+      "equipos": [],
+      "technologies": ["Figma", "UX", "UI"],
+      "skills": ["UX research", "prototipado", "gamificación", "coordinación de proyectos"],
+      "topics_experience": ["videojuegos", "apps", "narrativa"]
     },
     {
       "id": 3,
       "nombre": "Fátima",
       "empresa": "INQBarna",
       "foto": "/img/fatima.jpg",
-      "equipos": []
+      "equipos": [],
+      "technologies": ["Swift", "Xcode", "iOS"],
+      "skills": ["mobile development", "pruebas unitarias", "clean code"],
+      "topics_experience": ["tecnología", "educación", "apps"]
     },
     {
       "id": 4,
       "nombre": "Toni y Joan",
       "empresa": "Margot",
       "foto": "/img/toni_joan.jpg",
-      "equipos": []
+      "equipos": [],
+      "technologies": ["estrategia creativa", "brand building", "innovación"],
+      "skills": ["gestión de proyectos", "estrategia de marca", "conceptualización", "dirección creativa"],
+      "topics_experience": ["publicidad", "branding", "startups"]
     }
   ]
 }
