@@ -40,9 +40,9 @@ app.get("/api/equipos", (req, res) => {
     .catch(err => res.status(500).send(`Error reading database; ${err.message}`));
 });
 
-app.get("/api/mentores", (req, res) => {
+app.get("/api/equipos/:id", (req, res) => {
   readDatabase()
-    .then(data => res.json(data.mentores))
+    .then(data => res.json(data.equipos))
     .catch(err => res.status(500).send(`Error reading database; ${err.message}`));
 });
 
@@ -77,6 +77,12 @@ app.post("/api/equipos/:id", (req, res) => {
       .catch(err => res.status(500).send(`Error writing to database: ${err.message}`));
 
   }).catch(err => res.status(500).send(`Error reading database: ${err.message}`));
+});
+
+app.get("/api/mentores", (req, res) => {
+  readDatabase()
+    .then(data => res.json(data.mentores))
+    .catch(err => res.status(500).send(`Error reading database; ${err.message}`));
 });
 
 app.post("/api/mentores/:id", (req, res) => {
