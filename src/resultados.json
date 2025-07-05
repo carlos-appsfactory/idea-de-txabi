@@ -1,0 +1,163 @@
+{
+  "votingMatrix": [
+    [
+      {
+        "mentorId": "mentor1",
+        "teamId": "team1",
+        "voteEmitted": 2,
+        "voteReceived": 3,
+        "totalScore": 5,
+        "adequacyScore": 0.2
+      },
+      {
+        "mentorId": "mentor1",
+        "teamId": "team2",
+        "voteEmitted": 3,
+        "voteReceived": 2,
+        "totalScore": 5,
+        "adequacyScore": 0.2
+      },
+      {
+        "mentorId": "mentor1",
+        "teamId": "team3",
+        "voteEmitted": 1,
+        "voteReceived": 1,
+        "totalScore": 2,
+        "adequacyScore": 0.2
+      },
+      {
+        "mentorId": "mentor1",
+        "teamId": "team4",
+        "voteEmitted": 0,
+        "voteReceived": 0,
+        "totalScore": 0,
+        "adequacyScore": 0.7
+      }
+    ],
+    [
+      {
+        "mentorId": "mentor2",
+        "teamId": "team1",
+        "voteEmitted": 3,
+        "voteReceived": 1,
+        "totalScore": 4,
+        "adequacyScore": 0.2
+      },
+      {
+        "mentorId": "mentor2",
+        "teamId": "team2",
+        "voteEmitted": 0,
+        "voteReceived": 3,
+        "totalScore": 3,
+        "adequacyScore": 0.2
+      },
+      {
+        "mentorId": "mentor2",
+        "teamId": "team3",
+        "voteEmitted": 2,
+        "voteReceived": 0,
+        "totalScore": 2,
+        "adequacyScore": 0.4
+      },
+      {
+        "mentorId": "mentor2",
+        "teamId": "team4",
+        "voteEmitted": 1,
+        "voteReceived": 2,
+        "totalScore": 3,
+        "adequacyScore": 0.2
+      }
+    ],
+    [
+      {
+        "mentorId": "mentor3",
+        "teamId": "team1",
+        "voteEmitted": 0,
+        "voteReceived": 2,
+        "totalScore": 2,
+        "adequacyScore": 0
+      },
+      {
+        "mentorId": "mentor3",
+        "teamId": "team2",
+        "voteEmitted": 1,
+        "voteReceived": 0,
+        "totalScore": 1,
+        "adequacyScore": 0
+      },
+      {
+        "mentorId": "mentor3",
+        "teamId": "team3",
+        "voteEmitted": 3,
+        "voteReceived": 3,
+        "totalScore": 6,
+        "adequacyScore": 0
+      },
+      {
+        "mentorId": "mentor3",
+        "teamId": "team4",
+        "voteEmitted": 2,
+        "voteReceived": 1,
+        "totalScore": 3,
+        "adequacyScore": 0
+      }
+    ],
+    [
+      {
+        "mentorId": "mentor4",
+        "teamId": "team1",
+        "voteEmitted": 1,
+        "voteReceived": 0,
+        "totalScore": 1,
+        "adequacyScore": 0
+      },
+      {
+        "mentorId": "mentor4",
+        "teamId": "team2",
+        "voteEmitted": 2,
+        "voteReceived": 1,
+        "totalScore": 3,
+        "adequacyScore": 0
+      },
+      {
+        "mentorId": "mentor4",
+        "teamId": "team3",
+        "voteEmitted": 0,
+        "voteReceived": 2,
+        "totalScore": 2,
+        "adequacyScore": 0
+      },
+      {
+        "mentorId": "mentor4",
+        "teamId": "team4",
+        "voteEmitted": 3,
+        "voteReceived": 3,
+        "totalScore": 6,
+        "adequacyScore": 0
+      }
+    ]
+  ],
+  "matchings": {
+    "matching1": {
+      "team3": "mentor3",
+      "team4": "mentor4",
+      "team1": "mentor1",
+      "team2": "mentor2"
+    },
+    "matching2": null
+  },
+  "ties": {
+    "totalScoreTies": [
+      {
+        "mentorId": "mentor1",
+        "score": 5,
+        "teams": [
+          "team1",
+          "team2"
+        ]
+      }
+    ],
+    "mentorVotesReceivedTies": [],
+    "teamVotesReceivedTies": []
+  }
+}
