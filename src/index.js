@@ -3,6 +3,7 @@ import cors from "cors";
 import fs from "fs/promises";
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { runMatching } from "./matching.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -112,6 +113,24 @@ app.post("/api/mentores/:id", (req, res) => {
   }).catch(err => res.status(500).send(`Error reading database: ${err.message}`));
 });
 
+app.get("/api/matching", async (req, res) => {
+  try {
+    console.log("Matching endpoint hit");
+    const result = await runMatching();
+
+    // ruta donde guardaremos
+    const resultadosFile = path.join(__dirname, "resultados.json");
+
+    // lo escribimos sobreescribiendo si existe
+    await fs.writeFile(resultadosFile, JSON.stringify(result, null, 2), "utf8");
+
+    res.json(result);
+  } catch (err) {
+    res.status(500).send(`Error ejecutando matching: ${err.message}`);
+  }
+});
+
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
+
