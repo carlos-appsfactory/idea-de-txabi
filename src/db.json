@@ -20,12 +20,12 @@
     },
     {
       "id": 3,
-      "nombre": "Scapian + Suburbis",
+      "nombre": "EscapUrbis",
       "descripcion": "Escape room y barrios de barcelona",
       "mentores": [],
-      "technologies": ["React Native", "Node.js", "MongoDB", "Python microservices"],
-      "skills": ["gamificación", "narrativa", "geolocalización", "UX/UI"],
-      "topics_experience": ["cultura"]
+      "technologies": ["MongoDB", "Express", "React Native", "Node.js", "Python microservices", "WebAR", "Mapbox", "OneSignal", "QRCode.js"],
+      "skills": ["gamificación", "narrativa", "geolocalización", "UX/UI", "diseño de experiencia inmersiva", "storytelling interactivo"],
+      "topics_experience": ["cultura", "historia local", "patrimonio urbano", "turismo alternativo", "team building", "exploración urbana"]
     },
     {
       "id": 4,
