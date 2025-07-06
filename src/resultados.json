@@ -154,7 +154,9 @@
         "teams": [
           "team1",
           "team2"
-        ]
+        ],
+        "adequacyTie": true,
+        "irresolubleTie": true
       }
     ],
     "mentorVotesReceivedTies": [],

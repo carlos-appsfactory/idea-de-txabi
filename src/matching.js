@@ -10,7 +10,6 @@ function getPreferenceScore(rank) {
   return rank >= 0 ? 3 - rank : 0;
 }
 
-// votos de ejemplo
 const exampleVotesTeams = {
   team1: ["mentor1", "mentor3", "mentor2"],
   team2: ["mentor2", "mentor1", "mentor4"],
@@ -30,7 +29,6 @@ export async function runMatching() {
   const equipos = data.equipos;
   const mentores = data.mentores;
 
-  // cargar votos
   const votesTeams = {};
   equipos.forEach(team => {
     if (team.mentores.length === 3) {
@@ -51,7 +49,6 @@ export async function runMatching() {
 
   const votingMatrix = [];
 
-  // recorrer mentores
   mentores.forEach(mentor => {
     const mentorId = `mentor${mentor.id}`;
     const mentorVotes = votesMentors[mentorId] || [];
@@ -83,7 +80,6 @@ export async function runMatching() {
     votingMatrix.push(row);
   });
 
-  // matching greedy
   const assignments = {};
   const assignedMentors = new Set();
   const assignedTeams = new Set();
@@ -101,31 +97,33 @@ export async function runMatching() {
     }
   }
 
-  // detección de empates
   const ties = {
     totalScoreTies: [],
     mentorVotesReceivedTies: [],
     teamVotesReceivedTies: []
   };
 
-  // totalScoreTies
   mentores.forEach(mentor => {
     const mentorId = `mentor${mentor.id}`;
-    const scores = votingMatrix[mentor.id - 1].map(x => x.totalScore);
+    const row = votingMatrix[mentor.id - 1];
+    const scores = row.map(x => x.totalScore);
     const max = Math.max(...scores);
-    const teams = votingMatrix[mentor.id - 1]
-      .filter(x => x.totalScore === max)
-      .map(x => x.teamId);
+    const tied = row.filter(x => x.totalScore === max);
+    const teams = tied.map(x => x.teamId);
     if (teams.length > 1) {
+      const adequacyValues = tied.map(x => x.adequacyScore);
+      const firstAdequacy = adequacyValues[0];
+      const adequacyTie = adequacyValues.every(a => a === firstAdequacy);
       ties.totalScoreTies.push({
         mentorId,
         score: max,
-        teams
+        teams,
+        adequacyTie,
+        irresolubleTie: adequacyTie
       });
     }
   });
 
-  // mentorVotesReceivedTies
   mentores.forEach(mentor => {
     const mentorId = `mentor${mentor.id}`;
     const votes = votingMatrix[mentor.id - 1].map(x => x.voteReceived);
@@ -142,7 +140,6 @@ export async function runMatching() {
     }
   });
 
-  // teamVotesReceivedTies
   equipos.forEach(team => {
     const teamId = `team${team.id}`;
     const votes = votingMatrix.map(row =>
@@ -171,3 +168,4 @@ export async function runMatching() {
     ties
   };
 }
+
