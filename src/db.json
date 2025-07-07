@@ -23,7 +23,7 @@
       "nombre": "EscapUrbis",
       "descripcion": "Escape room y barrios de barcelona",
       "mentores": [],
-      "technologies": ["MongoDB", "Express", "React Native", "Node.js", "Python microservices", "WebAR", "Mapbox", "OneSignal", "QRCode.js"],
+      "technologies": ["JavaScript", "MongoDB", "Express", "React Native", "Node.js", "Python microservices", "WebAR", "Mapbox", "OneSignal", "QRCode.js"],
       "skills": ["gamificación", "narrativa", "geolocalización", "UX/UI", "diseño de experiencia inmersiva", "storytelling interactivo"],
       "topics_experience": ["cultura", "historia local", "patrimonio urbano", "turismo alternativo", "team building", "exploración urbana"]
     },
