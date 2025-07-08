@@ -11,17 +11,17 @@ function getPreferenceScore(rank) {
 }
 
 const exampleVotesTeams = {
-  team1: ["mentor1", "mentor3", "mentor2"],
-  team2: ["mentor2", "mentor1", "mentor4"],
-  team3: ["mentor3", "mentor4", "mentor1"],
-  team4: ["mentor4", "mentor2", "mentor3"]
+  team1: ["mentor1", "mentor2", "mentor3"],  // empate entre mentor1 y mentor2 como favoritos
+  team2: ["mentor1", "mentor2", "mentor4"],  // mentor1 y mentor2 favoritos también
+  team3: ["mentor3", "mentor4", "mentor1"],  // mentor3 y mentor4 en empate
+  team4: ["mentor3", "mentor4", "mentor2"]   // mentor3 y mentor4 en empate
 };
 
 const exampleVotesMentors = {
-  mentor1: ["team2", "team1", "team3"],
-  mentor2: ["team1", "team3", "team4"],
-  mentor3: ["team3", "team4", "team2"],
-  mentor4: ["team4", "team2", "team1"]
+  mentor1: ["team1", "team2", "team3"],      // empate en votos emitidos a team1 y team2
+  mentor2: ["team1", "team2", "team4"],      // mismo orden que mentor1 para generar empate
+  mentor3: ["team3", "team4", "team2"],      // empate entre team3 y team4
+  mentor4: ["team3", "team4", "team1"]       // empate entre team3 y team4 también aquí
 };
 
 export async function runMatching() {
