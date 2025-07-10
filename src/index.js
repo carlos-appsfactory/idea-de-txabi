@@ -10,107 +10,154 @@ const __dirname = path.dirname(__filename);
 
 const port = process.env.PORT || 3000;
 const db = path.join(__dirname, 'db.json');
+const max_equipos = 4;
+const max_mentores = 4;
+const num_votaciones = 3;
 const app = express();
 
 app.use(express.json());
 app.use(cors());
 
-async function readDatabase() {
-  try {
-    const data = await fs.readFile(db, 'utf8');
-    return JSON.parse(data);
-  } catch (err) {
-    console.error("Error reading database:", err);
-    return err;
-  }
-}
-
-async function writeDatabase(data) {
-  try {
-    await fs.writeFile(db, JSON.stringify(data, null, 2), 'utf8');
-    return true;
-  } catch (err) {
-    console.error("Error writing to database:", err);
-    return false;
-  }
-}
-
 app.get("/api/equipos", (req, res) => {
-  readDatabase()
+  fs.readFile(db, 'utf8')
+    .then(data => JSON.parse(data))
     .then(data => res.json(data.equipos))
-    .catch(err => res.status(500).send(`Error reading database; ${err.message}`));
+    .catch(err => { throw new Error(`Error reading database: ${err.message}`) });
 });
 
-app.get("/api/mentores", (req, res) => {
-  readDatabase()
-    .then(data => res.json(data.mentores))
-    .catch(err => res.status(500).send(`Error reading database; ${err.message}`));
-});
-
-app.post("/api/equipos/:id", (req, res) => {
+app.get("/api/equipos/:id", async (req, res) => {
   const id = parseInt(req.params.id);
-  if (!id || isNaN(id) || id <= 0 || id > 4) {
-    return res.status(400).send("El ID del equipo debe ser un numero entre 1 y 4");
+
+  if (!id || isNaN(id) || id <= 0 || id > max_equipos) {
+    return res.status(400).send(`El ID del equipo debe ser un numero entre 1 y ${max_equipos}`);
   }
 
-  const mentores = req.body;
-  if (!Array.isArray(mentores) || mentores.length < 3 || mentores.length > 3) {
-    return res.status(400).send("Los mentores favoritos deben ser exactamente 3.");
-  }
+  try {
+    const content = await fs.readFile(db, 'utf8');
+    const data = JSON.parse(content);
 
-  mentores.forEach(mentor => {
-    if (isNaN(mentor) || mentor <= 0 || mentor > 4) {
-      return res.status(400).send("Los mentores deben ser numeros entre 0 y 4.");
+    const equipo = data.equipos.find(e => e.id === id);
+
+    if (!equipo) {
+      return res.status(404).send(`Equipo con ID ${id} no encontrado.`);
     }
-  });
+
+    res.status(200).json(equipo);
+
+  } catch (err) {
+    res.status(500).send(`Error leyendo base de datos: ${err.message}`);
+  }
+});
+
+app.post("/api/equipos/:id", async (req, res) => {
+  const id = parseInt(req.params.id);
+  if (!id || isNaN(id) || id <= 0 || id > max_equipos) {
+    return res.status(400).send(`El ID del equipo debe ser un numero entre 1 y ${max_equipos}`);
+  }
+
+  const mentores = req.body;  
+  if (!Array.isArray(mentores) || mentores.length !== num_votaciones) {
+    return res.status(400).send(`Los mentores favoritos deben ser exactamente ${num_votaciones}.`);
+  }
+
+  if (mentores.some(mentor => isNaN(mentor) || mentor <= 0 || mentor > max_mentores)) {
+    return res.status(400).send(`Los mentores deben ser números entre 1 y ${max_mentores}.`);
+  }
 
   if (new Set(mentores).size !== mentores.length) {
     return res.status(400).send("Los mentores no deben repetirse.");
   }
 
-  readDatabase().then(data => {
-    const index = data.equipos.findIndex(equipo => equipo.id === id);
+  try {
+    const content = await fs.readFile(db, 'utf8');
+    const data = JSON.parse(content);
 
-    data.equipos[index].mentores = mentores;
+    const equipo = data.equipos.find(e => e.id === id);
 
-    writeDatabase(data)
-      .then(() => res.status(201).json(data.equipos[index]))
-      .catch(err => res.status(500).send(`Error writing to database: ${err.message}`));
+    if (!equipo) {
+      return res.status(404).send(`Equipo con ID ${id} no encontrado.`);
+    }
 
-  }).catch(err => res.status(500).send(`Error reading database: ${err.message}`));
+    equipo.mentores = mentores;
+
+    await fs.writeFile(db, JSON.stringify(data, null, 2), 'utf8');
+
+    res.status(200).json(equipo);
+
+  } catch (err){
+    return res.status(500).send(`Error al guardar: ${err.message}`);
+  }
 });
 
-app.post("/api/mentores/:id", (req, res) => {
+app.get("/api/mentores", (req, res) => {
+  fs.readFile(db, 'utf8')
+    .then(data => JSON.parse(data))
+    .then(data => res.json(data.mentores))
+    .catch(err => { throw new Error(`Error reading database: ${err.message}`) });
+});
+
+app.get("/api/mentores/:id", async (req, res) => {
   const id = parseInt(req.params.id);
+
+  if (!id || isNaN(id) || id <= 0 || id > max_mentores) {
+    return res.status(400).send(`El ID del mentor debe ser un numero entre 1 y ${max_mentores}`);
+  }
+
+  try {
+    const content = await fs.readFile(db, 'utf8');
+    const data = JSON.parse(content);
+    const mentor = data.mentores.find(e => e.id === id);
+
+    if (!mentor) {
+      return res.status(404).send(`Mentor con ID ${id} no encontrado.`);
+    }
+
+    res.status(200).json(mentor);
+
+  } catch (err) {
+    res.status(500).send(`Error leyendo base de datos: ${err.message}`);
+  }
+});
+
+app.post("/api/mentores/:id", async (req, res) => {
+  const id = parseInt(req.params.id);
+
   if (!id || isNaN(id) || id <= 0 || id > 4) {
-    return res.status(400).send("El ID del mentor debe ser un numero entre 1 y 4");
+    return res.status(400).send(`El ID del mentor debe ser un numero entre 1 y ${max_mentores}`);
   }
 
   const equipos = req.body;
-  if (!Array.isArray(equipos) || equipos.length < 3 || equipos.length > 3) {
-    return res.status(400).send("Los mentores favoritos deben ser exactamente 3.");
+  if (!Array.isArray(equipos) || equipos.length !== num_votaciones) {
+    return res.status(400).send(`Los equipos favoritos deben ser exactamente ${num_votaciones}.`);
   }
 
-  equipos.forEach(equipo => {
-    if (isNaN(equipo) || equipo <= 0 || equipo > 4) {
-      return res.status(400).send("Los equipos deben ser numeros entre 0 y 4.");
-    }
-  });
+  if (equipos.some(equipo => isNaN(equipo) || equipo <= 0 || equipo > max_equipos)) {
+    return res.status(400).send(`Los equipos deben ser números entre 1 y ${max_equipos}.`);
+  }
 
   if (new Set(equipos).size !== equipos.length) {
     return res.status(400).send("Los equipos no deben repetirse.");
   }
 
-  readDatabase().then(data => {
-    const index = data.mentores.findIndex(mentor => mentor.id === id);
+  try {
+    const content = await fs.readFile(db, 'utf8');
+    const data = JSON.parse(content);
 
-    data.mentores[index].equipos = equipos;
+    const mentor = data.mentores.find(e => e.id === id);
 
-    writeDatabase(data)
-      .then(() => res.status(201).json(data.mentores[index]))
-      .catch(err => res.status(500).send(`Error writing to database: ${err.message}`));
+    if (!mentor) {
+      return res.status(404).send(`Mentor con ID ${id} no encontrado.`);
+    }
 
-  }).catch(err => res.status(500).send(`Error reading database: ${err.message}`));
+    mentor.equipos = equipos;
+
+    await fs.writeFile(db, JSON.stringify(data, null, 2), 'utf8');
+
+    res.status(200).json(mentor)
+
+  } catch (err) {
+    return res.status(500).send(`${err.message}`);
+  }
 });
 
 app.get("/api/matching", async (req, res) => {
