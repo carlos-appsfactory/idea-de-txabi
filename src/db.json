@@ -103,11 +103,7 @@
       "nombre": "Eric Salat",
       "empresa": "Freelance",
       "foto": "/img/eric_salat.jpg",
-      "equipos": [
-        3,
-        4,
-        1
-      ],
+      "equipos": [],
       "technologies": [
         "JavaScript",
         "TypeScript",
