@@ -2,6 +2,10 @@
 
 Una fantastica idea que ha tenido el tutor de Apps Factory Txabi Anastasio. Una idea revolucionaria que arreglará la democracia
 
+## Diseño Figma
+
+- link: https://www.figma.com/design/We3W3DFmcExSEc0Z5p9Zzz/App--Vote-your-Group-Mentor?node-id=59-3415&t=zzOlVt5CBeZXkgzY-1
+
 ## DB
 
 Los **equipos** representan a los grupos que van a desarrollar cada app. Para cada equipo guardamos los siguientes datos:
