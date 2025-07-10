@@ -1,0 +1,190 @@
+{
+  "equipos": [
+    {
+      "id": 1,
+      "nombre": "Vetrams + Sugar Paws",
+      "descripcion": "Animales y veterinarios",
+      "mentores": [],
+      "technologies": [
+        "React Native",
+        "Firebase"
+      ],
+      "skills": [
+        "gestión de citas",
+        "geolocalización",
+        "UX/UI",
+        "fichas médicas"
+      ],
+      "topics_experience": [
+        "salud animal",
+        "adopción"
+      ]
+    },
+    {
+      "id": 2,
+      "nombre": "Erova",
+      "descripcion": "Ropa y moda",
+      "mentores": [],
+      "technologies": [
+        "React Native",
+        "Firebase"
+      ],
+      "skills": [
+        "pasarela de pago",
+        "catálogos",
+        "recomendaciones",
+        "UX/UI"
+      ],
+      "topics_experience": [
+        "moda",
+        "comercio electrónico"
+      ]
+    },
+    {
+      "id": 3,
+      "nombre": "EscapUrbis",
+      "descripcion": "Escape room y barrios de barcelona",
+      "mentores": [],
+      "technologies": [
+        "MongoDB",
+        "Express",
+        "React Native",
+        "Node.js",
+        "Python microservices",
+        "WebAR",
+        "Mapbox",
+        "OneSignal",
+        "QRCode.js"
+      ],
+      "skills": [
+        "gamificación",
+        "narrativa",
+        "geolocalización",
+        "UX/UI",
+        "diseño de experiencia inmersiva",
+        "storytelling interactivo"
+      ],
+      "topics_experience": [
+        "cultura",
+        "historia local",
+        "patrimonio urbano",
+        "turismo alternativo",
+        "team building",
+        "exploración urbana"
+      ]
+    },
+    {
+      "id": 4,
+      "nombre": "Packo + Unara",
+      "descripcion": "Viajes con tu mejor amigo Packo",
+      "mentores": [],
+      "technologies": [
+        "React Native",
+        "Node.js",
+        "MongoDB"
+      ],
+      "skills": [
+        "geolocalización",
+        "gestión de reservas",
+        "comunidad",
+        "UX/UI"
+      ],
+      "topics_experience": [
+        "viajes",
+        "mascotas",
+        "turismo"
+      ]
+    }
+  ],
+  "mentores": [
+    {
+      "id": 1,
+      "nombre": "Eric Salat",
+      "empresa": "Freelance",
+      "foto": "/img/eric_salat.jpg",
+      "equipos": [],
+      "technologies": [
+        "JavaScript",
+        "TypeScript",
+        "React",
+        "AMPscript"
+      ],
+      "skills": [
+        "frontend",
+        "email marketing",
+        "conversion",
+        "UX/UI"
+      ],
+      "topics_experience": [
+        "comunicación",
+        "marketing",
+        "viajes"
+      ]
+    },
+    {
+      "id": 2,
+      "nombre": "Tian",
+      "empresa": "Scopely",
+      "foto": "/img/tian.jpg",
+      "equipos": [],
+      "technologies": [
+        "Figma"
+      ],
+      "skills": [
+        "UX/UI",
+        "UX research",
+        "prototipado",
+        "gamificación",
+        "gestión de proyectos"
+      ],
+      "topics_experience": [
+        "videojuegos",
+        "apps",
+        "narrativa"
+      ]
+    },
+    {
+      "id": 3,
+      "nombre": "Fátima",
+      "empresa": "INQBarna",
+      "foto": "/img/fatima.jpg",
+      "equipos": [],
+      "technologies": [
+        "Swift",
+        "Xcode",
+        "iOS"
+      ],
+      "skills": [
+        "mobile development",
+        "pruebas unitarias",
+        "clean code"
+      ],
+      "topics_experience": [
+        "tecnología",
+        "educación",
+        "apps"
+      ]
+    },
+    {
+      "id": 4,
+      "nombre": "Toni y Joan",
+      "empresa": "Margot",
+      "foto": "/img/toni_joan.jpg",
+      "equipos": [],
+      "technologies": [],
+      "skills": [
+        "estrategia creativa",
+        "brand building",
+        "innovación",
+        "gestión de proyectos",
+        "conceptualización",
+        "dirección creativa"
+      ],
+      "topics_experience": [
+        "publicidad",
+        "branding",
+        "startups"
+      ]
+    }
+  ]
+}
