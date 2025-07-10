@@ -1,49 +1,39 @@
 import fs from "fs/promises";
 import path from "path";
-import { fileURLToPath } from 'url';
+import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const db = path.join(__dirname, "db.json");
 
 function getPreferenceScore(rank) {
-  return rank >= 0 ? 3 - rank : 0;
+  return rank >= 0 ? 4 - rank : 0;  // ordinal 1 → 4 puntos, ordinal 4 → 1 punto
 }
-
-const exampleVotesTeams = {
-  team1: ["mentor1", "mentor2", "mentor3"],  // empate entre mentor1 y mentor2 como favoritos
-  team2: ["mentor1", "mentor2", "mentor4"],  // mentor1 y mentor2 favoritos también
-  team3: ["mentor3", "mentor4", "mentor1"],  // mentor3 y mentor4 en empate
-  team4: ["mentor3", "mentor4", "mentor2"]   // mentor3 y mentor4 en empate
-};
-
-const exampleVotesMentors = {
-  mentor1: ["team1", "team2", "team3"],      // empate en votos emitidos a team1 y team2
-  mentor2: ["team1", "team2", "team4"],      // mismo orden que mentor1 para generar empate
-  mentor3: ["team3", "team4", "team2"],      // empate entre team3 y team4
-  mentor4: ["team3", "team4", "team1"]       // empate entre team3 y team4 también aquí
-};
 
 export async function runMatching() {
   const data = JSON.parse(await fs.readFile(db, "utf8"));
   const equipos = data.equipos;
   const mentores = data.mentores;
 
+  // Construcción de votos en bruto
   const votesTeams = {};
+  const votesMentors = {};
+  const teamsThatVoted = [];
+  const mentorsThatVoted = [];
+
   equipos.forEach(team => {
-    if (team.mentores.length === 3) {
-      votesTeams[`team${team.id}`] = team.mentores.map(mid => `mentor${mid}`);
-    } else {
-      votesTeams[`team${team.id}`] = exampleVotesTeams[`team${team.id}`];
+    const teamId = `team${team.id}`;
+    if (Array.isArray(team.mentores) && team.mentores.length === 4) {
+      votesTeams[teamId] = team.mentores.map(id => `mentor${id}`);
+      teamsThatVoted.push(teamId);
     }
   });
 
-  const votesMentors = {};
   mentores.forEach(mentor => {
-    if (mentor.equipos.length === 3) {
-      votesMentors[`mentor${mentor.id}`] = mentor.equipos.map(tid => `team${tid}`);
-    } else {
-      votesMentors[`mentor${mentor.id}`] = exampleVotesMentors[`mentor${mentor.id}`];
+    const mentorId = `mentor${mentor.id}`;
+    if (Array.isArray(mentor.equipos) && mentor.equipos.length === 4) {
+      votesMentors[mentorId] = mentor.equipos.map(id => `team${id}`);
+      mentorsThatVoted.push(mentorId);
     }
   });
 
@@ -80,6 +70,7 @@ export async function runMatching() {
     votingMatrix.push(row);
   });
 
+  // Matching greedy con desempate por adecuacyScore
   const assignments = {};
   const assignedMentors = new Set();
   const assignedTeams = new Set();
@@ -97,6 +88,7 @@ export async function runMatching() {
     }
   }
 
+  // Análisis de empates
   const ties = {
     totalScoreTies: [],
     mentorVotesReceivedTies: [],
@@ -124,6 +116,7 @@ export async function runMatching() {
     }
   });
 
+  // Ties por votos recibidos desde mentores
   mentores.forEach(mentor => {
     const mentorId = `mentor${mentor.id}`;
     const votes = votingMatrix[mentor.id - 1].map(x => x.voteReceived);
@@ -140,6 +133,7 @@ export async function runMatching() {
     }
   });
 
+  // Ties por votos recibidos desde equipos
   equipos.forEach(team => {
     const teamId = `team${team.id}`;
     const votes = votingMatrix.map(row =>
@@ -165,7 +159,16 @@ export async function runMatching() {
       matching1: assignments,
       matching2: null
     },
-    ties
+    ties,
+    rawVotes: {
+      votesTeams,
+      votesMentors
+    },
+    voteStatus: {
+      teamsThatVoted,
+      mentorsThatVoted,
+      teamsThatDidNotVote: equipos.map(e => `team${e.id}`).filter(id => !teamsThatVoted.includes(id)),
+      mentorsThatDidNotVote: mentores.map(m => `mentor${m.id}`).filter(id => !mentorsThatVoted.includes(id))
+    }
   };
 }
-
