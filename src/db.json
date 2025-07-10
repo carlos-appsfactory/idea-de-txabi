@@ -18,11 +18,25 @@
       "topics_experience": [
         "salud animal",
         "adopción"
+      ],
+      "technologies": [
+        "React Native",
+        "Firebase"
+      ],
+      "skills": [
+        "gestión de citas",
+        "geolocalización",
+        "UX/UI",
+        "fichas médicas"
+      ],
+      "topics_experience": [
+        "salud animal",
+        "adopción"
       ]
     },
     {
       "id": 2,
-      "nombre": "Stylo + Evora",
+      "nombre": "Erova",
       "descripcion": "Ropa y moda",
       "mentores": [],
       "technologies": [
@@ -46,7 +60,6 @@
       "descripcion": "Escape room y barrios de barcelona",
       "mentores": [],
       "technologies": [
-        "JavaScript",
         "MongoDB",
         "Express",
         "React Native",
