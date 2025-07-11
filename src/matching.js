@@ -153,7 +153,9 @@ export async function runMatching() {
     }
   });
 
-  return {};
+  return {
+    "test": "test",
+  };
 
   /*
   return {
