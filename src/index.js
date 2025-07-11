@@ -12,7 +12,7 @@ const port = process.env.PORT || 3000;
 const db = path.join(__dirname, 'db.json');
 const max_equipos = 4;
 const max_mentores = 4;
-const num_votaciones = 3;
+const num_votaciones = 4;
 const app = express();
 
 app.use(cors());
