@@ -17,8 +17,12 @@ const num_votaciones = 4;
 const app = express();
 
 app.use(express.json());
-app.use(cors());
-app.options('*', cors());
+
+app.use(cors({
+  origin: 'http://localhost:5173', // o tu dominio de frontend
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type']
+}));
 
 app.get("/api/equipos", (req, res) => {
   fs.readFile(db, 'utf8')
@@ -124,7 +128,7 @@ app.get("/api/mentores/:id", async (req, res) => {
 app.post("/api/mentores/:id", async (req, res) => {
   const id = parseInt(req.params.id);
 
-  if (!id || isNaN(id) || id <= 0 || id > 4) {
+  if (!id || isNaN(id) || id <= 0 || id > max_mentores) {
     return res.status(400).send(`El ID del mentor debe ser un numero entre 1 y ${max_mentores}`);
   }
 
