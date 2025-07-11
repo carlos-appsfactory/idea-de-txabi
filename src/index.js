@@ -163,6 +163,7 @@ app.post("/api/mentores/:id", async (req, res) => {
 app.get("/api/matching", async (req, res) => {
   try {
     console.log("Matching endpoint hit");
+    res.json({});
     const result = await runMatching();
 
     // ruta donde guardaremos
