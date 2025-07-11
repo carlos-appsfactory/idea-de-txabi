@@ -5,8 +5,6 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { runMatching } from "./matching.js";
 
-import util from "util";
-
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -168,13 +166,9 @@ app.get("/api/matching", async (req, res) => {
     console.log("Matching endpoint hit");
     const result = await runMatching();
 
-    console.log(util.inspect(result, { depth: null, colors: true }));
+    jsonResult = JSON.stringify(result, null, 2);
 
-    //jsonResult = JSON.stringify(result, null, 2);
-
-    //console.log(jsonResult);
-
-    //await fs.writeFile(resultadosFile, jsonResult, "utf8");
+    await fs.writeFile(resultadosFile, jsonResult, "utf8");
 
     res.json(result);
   } catch (err) {

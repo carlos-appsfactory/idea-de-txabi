@@ -153,6 +153,9 @@ export async function runMatching() {
     }
   });
 
+  return {};
+
+  /*
   return {
     votingMatrix,
     matchings: {
@@ -171,4 +174,5 @@ export async function runMatching() {
       mentorsThatDidNotVote: mentores.map(m => `mentor${m.id}`).filter(id => !mentorsThatVoted.includes(id))
     }
   };
+  */
 }
