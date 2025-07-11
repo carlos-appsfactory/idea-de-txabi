@@ -15,8 +15,8 @@ const max_mentores = 4;
 const num_votaciones = 3;
 const app = express();
 
-app.use(express.json());
 app.use(cors());
+app.use(express.json());
 
 app.get("/api/equipos", (req, res) => {
   fs.readFile(db, 'utf8')
