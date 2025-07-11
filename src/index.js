@@ -161,12 +161,14 @@ app.post("/api/mentores/:id", async (req, res) => {
   }
 });
 
+const util = require("util");
+
 app.get("/api/matching", async (req, res) => {
   try {
     console.log("Matching endpoint hit");
     const result = await runMatching();
 
-    console.log(result);
+    console.log(util.inspect(result, { depth: null, colors: true }));
 
     //jsonResult = JSON.stringify(result, null, 2);
 
