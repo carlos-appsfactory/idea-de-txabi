@@ -12,11 +12,11 @@ const port = process.env.PORT || 3000;
 const db = path.join(__dirname, 'db.json');
 const max_equipos = 4;
 const max_mentores = 4;
-const num_votaciones = 3;
+const num_votaciones = 4;
 const app = express();
 
-app.use(express.json());
 app.use(cors());
+app.use(express.json());
 
 app.get("/api/equipos", (req, res) => {
   fs.readFile(db, 'utf8')
