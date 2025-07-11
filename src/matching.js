@@ -155,6 +155,7 @@ export async function runMatching() {
 
   return {
     votingMatrix,
+    /*
     matchings: {
       matching1: assignments,
       matching2: null
@@ -164,7 +165,6 @@ export async function runMatching() {
       votesTeams,
       votesMentors
     },
-    /*
     voteStatus: {
       teamsThatVoted,
       mentorsThatVoted,
