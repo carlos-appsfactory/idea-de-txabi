@@ -163,14 +163,16 @@ app.post("/api/mentores/:id", async (req, res) => {
 app.get("/api/matching", async (req, res) => {
   try {
     console.log("Matching endpoint hit");
-    res.json({});
-    // const result = await runMatching();
+     const result = await runMatching();
 
-    // // ruta donde guardaremos
-    // const resultadosFile = path.join(__dirname, "resultados.json");
+    // ruta donde guardaremos
+    const resultadosFile = path.join(__dirname, "resultados.json");
 
-    // // lo escribimos sobreescribiendo si existe
-    // await fs.writeFile(resultadosFile, JSON.stringify(result, null, 2), "utf8");
+        res.json({});
+
+
+    // // // lo escribimos sobreescribiendo si existe
+    //  await fs.writeFile(resultadosFile, JSON.stringify(result, null, 2), "utf8");
 
     // res.json(result);
   } catch (err) {
