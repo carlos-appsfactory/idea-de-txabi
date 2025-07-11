@@ -155,11 +155,11 @@ export async function runMatching() {
 
   return {
     votingMatrix,
-    /*
     matchings: {
       matching1: assignments,
       matching2: null
     },
+    /*
     ties,
     rawVotes: {
       votesTeams,
