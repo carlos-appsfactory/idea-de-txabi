@@ -160,11 +160,11 @@ export async function runMatching() {
       matching2: null
     },
     ties,
-    /*
     rawVotes: {
       votesTeams,
       votesMentors
     },
+    /*
     voteStatus: {
       teamsThatVoted,
       mentorsThatVoted,
