@@ -172,6 +172,7 @@ app.get("/api/matching", async (req, res) => {
 
     res.json(result);
   } catch (err) {
+    console.log(`Error ejecutando matching: ${err.message}`);
     res.status(500).send(`Error ejecutando matching: ${err.message}`);
   }
 });
