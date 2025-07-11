@@ -10,6 +10,7 @@ const __dirname = path.dirname(__filename);
 
 const port = process.env.PORT || 3000;
 const db = path.join(__dirname, 'db.json');
+const resultadosFile = path.join(__dirname, "resultados.json");
 const max_equipos = 4;
 const max_mentores = 4;
 const num_votaciones = 4;
@@ -165,26 +166,13 @@ app.get("/api/matching", async (req, res) => {
     console.log("Matching endpoint hit");
     const result = await runMatching();
 
-    // ruta donde guardaremos
-    const resultadosFile = path.join(__dirname, "resultados.json");
+    jsonResult = JSON.stringify(result, null, 2);
 
-    // lo escribimos sobreescribiendo si existe
+    console.log(jsonResult);
 
-    try {
-      console.log("__filename:", __filename);
-      console.log("__dirname:", __dirname);
+    //await fs.writeFile(resultadosFile, jsonResult, "utf8");
 
-
-      console.log("archivo de resultados: " + resultadosFile);
-      await fs.writeFile(resultadosFile, JSON.stringify(result, null, 2), "utf8");
-    } catch (writeErr) {
-      console.error("Error al escribir el archivo:", writeErr.message);
-    }
-
-
-    //await fs.writeFile(resultadosFile, JSON.stringify(result, null, 2), "utf8");
-
-    res.json(result);    
+    res.json(result);
   } catch (err) {
     res.status(500).send(`Error ejecutando matching: ${err.message}`);
   }
