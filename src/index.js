@@ -165,18 +165,16 @@ app.get("/api/matching", async (req, res) => {
     console.log("Matching endpoint hit");
     const result = await runMatching();
 
+    console.log("Matching result:", result);
+
     // ruta donde guardaremos
     const resultadosFile = path.join(__dirname, "resultados.json");
 
-    res.json(result);
-
     // lo escribimos sobreescribiendo si existe
-    //await fs.writeFile(resultadosFile, JSON.stringify(result, null, 2), "utf8");
-    fs.writeFile(resultadosFile, JSON.stringify(result, null, 2), "utf8");
+    await fs.writeFile(resultadosFile, JSON.stringify(result, null, 2), "utf8");
 
-    
+    res.json(result);    
   } catch (err) {
-    console.log(`Error ejecutando matching: ${err.message}`);
     res.status(500).send(`Error ejecutando matching: ${err.message}`);
   }
 });
