@@ -166,9 +166,7 @@ app.get("/api/matching", async (req, res) => {
     console.log("Matching endpoint hit");
     const result = await runMatching();
 
-    jsonResult = JSON.stringify(result, null, 2);
-
-    await fs.writeFile(resultadosFile, jsonResult, "utf8");
+    await fs.writeFile(resultadosFile, JSON.stringify(result, null, 2), "utf8");
 
     res.json(result);
   } catch (err) {
