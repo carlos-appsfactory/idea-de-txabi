@@ -171,7 +171,7 @@ app.get("/api/matching", async (req, res) => {
     // lo escribimos sobreescribiendo si existe
 
     try {
-      console.log(resultadosFile);
+      console.log("archivo de resultados: " + resultadosFile);
       await fs.writeFile(resultadosFile, JSON.stringify(result, null, 2), "utf8");
     } catch (writeErr) {
       console.error("Error al escribir el archivo:", writeErr.message);
