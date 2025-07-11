@@ -5,6 +5,8 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { runMatching } from "./matching.js";
 
+import util from "util";
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -160,8 +162,6 @@ app.post("/api/mentores/:id", async (req, res) => {
     return res.status(500).send(`${err.message}`);
   }
 });
-
-const util = require("util");
 
 app.get("/api/matching", async (req, res) => {
   try {
