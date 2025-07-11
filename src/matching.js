@@ -164,13 +164,13 @@ export async function runMatching() {
       votesTeams,
       votesMentors
     },
-    /*
     voteStatus: {
       teamsThatVoted,
       mentorsThatVoted,
+      /*
       teamsThatDidNotVote: equipos.map(e => `team${e.id}`).filter(id => !teamsThatVoted.includes(id)),
       mentorsThatDidNotVote: mentores.map(m => `mentor${m.id}`).filter(id => !mentorsThatVoted.includes(id))
+      */
     }
-    */
   };
 }
